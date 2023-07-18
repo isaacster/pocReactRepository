@@ -12,13 +12,14 @@ class Employee extends React.Component {
     }
   
     componentDidMount() {
-      fetch("https://localhost:44375/weatherforecast")
+      fetch("https://localhost:44375/employees")
         .then(res => res.json())
         .then(
           (result) => {
+            debugger;
             this.setState({
               isLoaded: true,
-              items: result.items
+              items: result
             });
           },
           // Note: it's important to handle errors here
@@ -34,6 +35,9 @@ class Employee extends React.Component {
     }
   
     render() {
+
+
+      debugger;
       const { error, isLoaded, items } = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
@@ -41,13 +45,18 @@ class Employee extends React.Component {
         return <div>Loading...</div>;
       } else {
         return (
+
+          <div>
+          These are the employees: 
+          
           <ul>
             {items.map(item => (
-              <li key={item.id}>
+              <li key={item.id}> 
                 {item.name} {item.price}
               </li>
             ))}
           </ul>
+          </div>
         );
       }
     }
