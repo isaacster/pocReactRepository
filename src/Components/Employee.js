@@ -12,7 +12,18 @@ class Employee extends React.Component {
     }
   
     componentDidMount() {
-      fetch("https://localhost:44375/employees")
+      fetch("https://localhost:44375/employees",
+    
+      {
+     method: 'GET',
+     headers: {
+       'Authorization': `123456`,
+       'Content-Type': 'application/json',
+     }
+   }
+   
+   
+   )
         .then(res => res.json())
         .then(
           (result) => {

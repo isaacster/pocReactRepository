@@ -4,8 +4,21 @@ const ViewEmployee = () => {
   const [employeeId, setEmployeeId] = useState('');
   const [employee, setEmployee] = useState(null);
 
+  const apiKey = "123456";
+
+
   const handleViewEmployee = () => {
-    fetch(`https://localhost:44375/employees/${employeeId}`)
+    fetch(`https://localhost:44375/employees/${employeeId}`,
+    
+   {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json',
+  },
+}
+    
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Employee not found');
