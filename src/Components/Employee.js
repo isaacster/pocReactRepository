@@ -16,7 +16,7 @@ class Employee extends React.Component {
         .then(res => res.json())
         .then(
           (result) => {
-            debugger;
+           
             this.setState({
               isLoaded: true,
               items: result
@@ -35,9 +35,7 @@ class Employee extends React.Component {
     }
   
     render() {
-
-
-      debugger;
+ 
       const { error, isLoaded, items } = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
@@ -48,11 +46,10 @@ class Employee extends React.Component {
 
           <div>
           These are the employees: 
-          
           <ul>
             {items.map(item => (
               <li key={item.id}> 
-                {item.name} {item.price}
+               Name: {item.name} | Id: {item.id}
               </li>
             ))}
           </ul>
