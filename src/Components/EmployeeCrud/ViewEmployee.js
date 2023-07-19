@@ -10,15 +10,10 @@ const ViewEmployee = () => {
 
   const handleViewEmployee = () => {
     fetch(`${GlobalContext.ApiUrl}/${employeeId}`,
-    
-   {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${apiKey}`,
-    'Content-Type': 'application/json',
-  },
-}
-    
+      {
+        method: 'GET',
+        headers: GlobalContext.headers
+      }
     )
       .then((response) => {
         if (!response.ok) {

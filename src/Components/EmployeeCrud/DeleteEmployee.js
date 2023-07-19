@@ -7,7 +7,7 @@ const DeleteEmployee = () => {
 
   const handleDelete = () => {
     fetch( `${GlobalContext.ApiUrl}/${employeeId}`, {
-      method: 'DELETE',
+      method: 'DELETE', headers: GlobalContext.headers
     })
       .then((response) => {
         if (!response.ok) {

@@ -12,12 +12,11 @@ import DeleteEmployee from "./Components/EmployeeCrud/DeleteEmployee";
 import GlobalContext from './Components/GlobalContext';
 
 function App() {
-
-  debugger;
-
+ 
   /* In real life application the react app will forward the requests to a local server which will call the Employee API so token and api url will not be exposed  */
   GlobalContext.ApiUrl = "https://localhost:44375/employees";
   GlobalContext.ApiToken = "xd4f!dfsd@sdf";
+  GlobalContext.headers =   {    'Authorization': GlobalContext.ApiToken,    'Content-Type': 'application/json',  };
 
   return (
       <div>

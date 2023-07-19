@@ -17,9 +17,7 @@ const UpdateEmployee = () => {
 
     fetch(`${GlobalContext.ApiUrl}/${employeeId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: GlobalContext.headers,
       body: JSON.stringify(employee),
     })
       .then((response) => {

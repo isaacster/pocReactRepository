@@ -22,9 +22,7 @@ const AddEmployee = () => {
 
     fetch   (GlobalContext.ApiUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: GlobalContext.headers,
       body: JSON.stringify(employee),
     })
       .then((response) => response.json())
