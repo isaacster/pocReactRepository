@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import DOMPurify from 'dompurify';
+import GlobalContext from '../../Components/GlobalContext';
 
 const UpdateEmployee = () => {
   const [employeeId, setEmployeeId] = useState('');
@@ -7,12 +9,13 @@ const UpdateEmployee = () => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleUpdateEmployee = () => {
+
     const employee = {
-      name: name,
-      job: job,
+      name: DOMPurify.sanitize(name),
+      job: DOMPurify.sanitize(job),
     };
 
-    fetch(`https://localhost:44375/employees/${employeeId}`, {
+    fetch(`${GlobalContext.ApiUrl}/${employeeId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

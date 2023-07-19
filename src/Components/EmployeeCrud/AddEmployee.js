@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-
+import DOMPurify from 'dompurify';
+import GlobalContext from '../../Components/GlobalContext';
+ 
 const AddEmployee = () => {
   const [name, setName] = useState('');
   const [job, setJob] = useState('');
@@ -8,12 +10,17 @@ const AddEmployee = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if(!name || !job){
+      return;
+    }
+ 
     const employee = {
-      name: name,
-      job: job,
+    //try something like <img src=x onerror="alert(\'XSS attack!\');">
+      name: DOMPurify.sanitize(name),
+      job: DOMPurify.sanitize(job),
     };
 
-    fetch   ('https://localhost:44375/employees', {
+    fetch   (GlobalContext.ApiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

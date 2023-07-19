@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import GlobalContext from '../../Components/GlobalContext';
 
 const DeleteEmployee = () => {
   const [employeeId, setEmployeeId] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleDelete = () => {
-    fetch(`https://localhost:44375/employees/${employeeId}`, {
+    fetch( `${GlobalContext.ApiUrl}/${employeeId}`, {
       method: 'DELETE',
     })
       .then((response) => {

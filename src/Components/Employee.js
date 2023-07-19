@@ -1,5 +1,6 @@
 
 import React from "react";
+import GlobalContext from './GlobalContext';
 
 class Employee extends React.Component {
     constructor(props) {
@@ -12,12 +13,12 @@ class Employee extends React.Component {
     }
   
     componentDidMount() {
-      fetch("https://localhost:44375/employees",
-    
+ 
+      fetch(GlobalContext.ApiUrl,    
       {
      method: 'GET',
      headers: {
-       'Authorization': `123456`,
+       'Authorization': GlobalContext.ApiToken,
        'Content-Type': 'application/json',
      }
    }
@@ -56,11 +57,11 @@ class Employee extends React.Component {
         return (
 
           <div>
-          These are the employees: 
+         <h1> Employee list: </h1>
           <ul>
             {items.map(item => (
               <li key={item.id}> 
-               Name: {item.name} | Id: {item.id}
+              Id: {item.id}|  Name: {item.name}|   job: {item.job} |   WorkstationNo: {item.workstationNo}
               </li>
             ))}
           </ul>
